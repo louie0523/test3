@@ -1,0 +1,108 @@
+#include<stdio.h>
+
+main() {
+	printf("<민찬이 키우기 1>\n");
+	printf("본 프로그램은 가상의 인물을 토대로 만들어졌음을 알립니다.\n");
+	int health = 100;
+	int max_h = 100;
+	int study = 10;
+	int art = 10;
+	int age = 10;
+	int day = 1;
+	int atk = 10;
+	int c, a;
+	while(1) {
+		printf("%d살의 민찬이가 있다. 무엇을 시킬까?\n", age);
+		printf("<민찬이의 능력치>\n");
+		printf(">> 체력 : 최대 체력 : %d - %d \n", max_h, health );
+		printf(">> 전투력 : %d\n", atk);
+		printf(">> 공부 : %d\n", study); 
+		printf(">> 예술적 감각 : %d\n", art);
+		printf("<               >\n");
+		printf("1.나가서 놀기 2.공부 3.그림 그리기  4.숨만쉬어\n");
+		scanf("%d", &c);
+		if(c == 1) {
+			printf("민찬이는 열심히 밖에서 놀았다.\n");
+			printf("최대 체력과 전투력이 5 증가했다.\n");
+			max_h += 5;
+			atk += 5;
+			health -= 20;
+		} else if( c == 2) {
+			printf("민찬이는 집에서 열심히 공부했다.\n");
+			printf("공부 능력치가 5 증가했다.\n");
+			study += 5;
+			health -= 10;
+		} else if( c == 3) {
+			printf("민찬이는 집에서 그림을 그렸다.\n");
+			printf("예술적 감각이 5 증가했다.\n");
+			printf("공부 능력치가 2 증가했다.\n");
+			study += 2;
+			art += 5;
+			health -= 10;			
+		} else if( c == 4) {
+			printf("민찬이는 숨만 쉬었다.\n");
+			printf("체력회복 + 50\n");
+			if((health + 50) > max_h) {
+				health = max_h;
+			} else {
+				health += 50;
+			}
+		}
+		day++;
+		if(day >= 3) {
+			printf("1년이 지났다.\n");
+			printf("민찬이가 성장을 했다.\n");
+			age++;
+			max_h += 20;
+			atk += 10;
+			study += 5;
+			art++;
+			day = 0;
+		}
+		if(age = 15 && ev != 1) {
+			printf("민찬이는 길을 걷다가 노인을 핍박하는 깡패를 발견했다.\n");
+			printf("어떻게 할까?\n");
+			printf("1.깡패를 해치운다. 2.무시한다.\n");
+			scanf("%d", &a);			
+			if(a == 1) {
+				if(study >= 30 && art >= 40) {
+					printf("민찬이는 미대에 합격했다.\n");
+					printf("엔딩 1 : 성실한 미대생.");
+					break;
+				} else {
+					printf("민찬이는 미대에 떨어졌다.\n");
+					printf("민찬이는 '아돌프 히틀러'(은)는 으로 진화했다.\n");
+					printf("세계 1차 대전이 반발했다...\n");
+					printf("엔딩 2 : 붉은 미대생 ");
+					break;
+				}
+			} else {
+				printf("민찬이 무엇을 할지 결정하지 못하고 결국 배달부가 됬다...\n");
+				printf("엔딩 3 : 열심히 사는 딸배");
+				break;
+			} 			
+		} 
+		if(age >= 19) {
+			printf("민찬이는 이제 곧 성인이 된다. 미대 입시를 할까?\n");
+			printf("1.준비한다 2.준비하지않는다.\n");
+			scanf("%d", &a);
+			if(a == 1) {
+				if(study >= 30 && art >= 40) {
+					printf("민찬이는 미대에 합격했다.\n");
+					printf("엔딩 1 : 성실한 미대생.");
+					break;
+				} else {
+					printf("민찬이는 미대에 떨어졌다.\n");
+					printf("민찬이는 '아돌프 히틀러'(은)는 으로 진화했다.\n");
+					printf("세계 1차 대전이 반발했다...\n");
+					printf("엔딩 2 : 붉은 미대생 ");
+					break;
+				}
+			} else {
+				printf("민찬이 무엇을 할지 결정하지 못하고 결국 배달부가 됬다...\n");
+				printf("엔딩 3 : 열심히 사는 딸배");
+				break;
+			} 
+		}
+	}
+}
