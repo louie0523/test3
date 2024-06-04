@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    printf("<축복이 키우기 3>\n");
+    printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
+    int health, atk, Lv, exp, max_e, max_h, gold, ch, m_ch, nml;
+    max_h = 100;
+    health = 100;
+    atk = 25;
+    Lv = 1;
+    exp = 0;
+    max_e = 100;
+    gold = 1000;
+    m_ch = 0;
+    nml = 1;
+    const char* item_name[] = {"박망고","김미진", "박상도", "박상도의 플레이스테이션", "엄마따라가"};
+    const char* item_ep[] = {"박망고의 보신탕을 먹어 최대 HP가 300 증가합니다.",
+							"미진이의 춤을 보고 감명 받아 회피율이 10% 증가합니다.",
+							"상도덕을 지켜 레벨이 낮은 적에게 입히는 피해가 50% 증가합니다.",
+							"상도의 게임기를 활용하여 20%확률로 적의 공격을 반사합니다.",
+							"엄마를 따라가 자결합니다."};
+    const char* monster_name[] = {"슬라임","고블린", "오크", "와이번", "드래곤"};
+    int mmax_h[] = {100, 400, 1000, 2500, 10000};
+    int m_atk[] = {10, 25, 40, 70, 125};
+    int skill[] = {1, 0, 0, 0};
+    const char* skill_name[] = {"없음", "베기", "급소찌르기", "명상", "화염마법", "전기마법", "흡혈사슬", "지진파", "하이드로펌프"};
+    const char* skill_ep[] = {"스킬이 없습니다.", "적을 베어 공격력의 150%만큼의 피해를 입힌다.",
+                         "적의 급소를 찔러 공격력의 160%만큼의 피해를 입힌다. 30%확률로 3배의 피해를 입힌다.", "체력을 30% 회복한다.",
+                         "적에게 화염마법을 가하여 공격력의 220%만큼 피해를 입히고, 공격력을 20%감소시킨다.",
+                         "적에게 전기마법을 가하여 공격력의 240%만큼 피해를 입히고, 최대 체력을 15%감소시킨다.",
+                         "적에게 체력을 흡수하는 공격을 사용하여 공격력의 200%만큼 피해를 입히고, 입힌 피해량의 50%를 회복한다.",
+                         "적에게 지진을 일으키는 마법을 사용하여 공격력의 270%만큼 피해를 입히고, 30%확률로 대상의 턴을 스킵한다.",
+                         "적에게 강력한 물줄기를 발사하여 공격력의 300%만큼 피해를 입힌다."};
+    // 0 노말 , 1 불 , 2 전기 , 3 물 , 4 땅
+    // 상성표
+    // 공격 | 불 | 전기 | 물 | 땅 | ("배"단위로 계산함.)
+    // 불 | 1 | 1 | 1 | 2 |
+    // 전기 | 1 | 1 | 2 | 1 |
+    // 물 | 2 | 1 | 1 | 1 |
+    // 땅 | 1 | 2 | 1 | 1 |
+    int skill_type[] = {0, 0, 0, 1, 2, 0};
+    while (1) {
+        printf("무엇을 할까?\n");
+        printf("1.전투를 준비한다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
+        scanf("%d", &ch);
+        if (ch == 1) {
+        	if(nml >= 10){
+        		m_ch++;
+        		nml = 0;
+			}
+			printf("길을 걷다가 야생의 %s와 마주쳤다.\n",monster_name[m_ch]);
+        } else if (ch == 2) {
+            printf("<축복이의 능력치>\n");
+            printf("LV : %d\n", Lv);
+            printf("필요 EXP : %d - %d\n", max_e, exp);
+            printf("최대체력 : %d - %d\n", max_h, health);
+            printf("공격력 : %d\n", atk);
+            printf("소지 골드 : %dG\n", gold);
+        } else if (ch == 3) {
+            printf("<축복이의 스킬>\n");
+            printf("1. <%s> \n", skill_name[skill[0]]);
+            printf("1 - 설명 : %s\n", skill_ep[skill[0]]);
+            printf("2. <%s> \n", skill_name[skill[1]]);
+            printf("2 - 설명 : %s\n", skill_ep[skill[1]]);
+            printf("3. <%s> \n", skill_name[skill[2]]);
+            printf("3 - 설명 : %s\n", skill_ep[skill[2]]);
+            printf("4. <%s> \n", skill_name[skill[3]]);
+            printf("4 - 설명 : %s\n", skill_ep[skill[3]]);
+        } else if (ch == 4) {
+            printf("<축복이의 가방>\n");
+            printf("아직안만들었어요.");
+        }
+    }
+    return 0;
+}
