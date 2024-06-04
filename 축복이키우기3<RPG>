@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     printf("<축복이 키우기 3>\n");
     printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
-    int health, atk, Lv, exp, max_e, max_h, gold, ch, m_ch, nml;
+    int health, atk, Lv, exp, max_e, max_h, gold, ch, m_ch, nml, speed;
     max_h = 100;
     health = 100;
     atk = 25;
@@ -17,6 +17,8 @@ int main() {
     gold = 1000;
     m_ch = 0;
     nml = 1;
+    speed = 100;
+    float atk_ban = 0.f;
     const char* item_name[] = {"박망고","김미진", "박상도", "박상도의 플레이스테이션", "엄마따라가"};
     const char* item_ep[] = {"박망고의 보신탕을 먹어 최대 HP가 300 증가합니다.",
 							"미진이의 춤을 보고 감명 받아 회피율이 10% 증가합니다.",
@@ -43,6 +45,7 @@ int main() {
     // 물 | 2 | 1 | 1 | 1 |
     // 땅 | 1 | 2 | 1 | 1 |
     int skill_type[] = {0, 0, 0, 1, 2, 0};
+    float skill_atk[] = {0, 1.5f, 1.6f, 0, 2.2f, 2.4f, 2.0f, 2.7f, 3.0f};
     while (1) {
         printf("무엇을 할까?\n");
         printf("1.전투를 준비한다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
