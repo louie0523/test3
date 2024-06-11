@@ -9,7 +9,7 @@ using namespace std;
 int main() {
     printf("<축복이 키우기 3>\n");
     printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
-    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3;
+    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3, ch2;
     float m_health,m_mhealth,health,max_h, cri, cri_atk;
     max_h = 100;
     health = 100;
@@ -58,7 +58,7 @@ int main() {
         printf("1.전투를 준비한다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
         scanf("%d", &ch);
         if (ch == 1) {
-        	std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        	std::srand(static_cast<unsigned int>(std::time(NULL)));
    			int ran = std::rand() % 3 + 1;
    			if(ran == 1) {
    				if(nml >= 10){
@@ -79,76 +79,78 @@ int main() {
            			printf("필요 EXP : %d - %d\n", max_e, exp);
             		printf("최대체력 : %2f - %2f\n", max_h, health);
             		printf("공격력 : %d\n", atk);
-            	}
-            	if(health >= ((int)max_h / 2)) {
-            		printf("상태 : 전의를 다지고 있다.\n");
-				} else {
-					printf("상태 : 각오를 하고 있다.\n");
-				}
-				printf("______________________________________\n");
-				printf("무엇을 해야할까?\n");
-				printf("1.공격 2.스킬사용 3.상황 체크 4.도망친다. \n");
-				scanf("%d", &ch2);
-				printf("______________________________________\n");
-				if(ch2 == 1) {
-					printf("이얍!\n");
-					printf("적에게 %d의 피해를 입혔다.\n", atk);
-					m_health -= atk;
-				} else if(ch2 == 2) {
-					printf("무슨 스킬을 사용할까?\n");
-					printf("1. <%s> 2. <%s> 3. <%s> 4. <%s>",skill_name[skill[0]],skill_name[skill[1]],skill_name[skill[2]],skill_name[skill[3]]);
-					scanf("%d", &ch3);
-					if(skill[ch3-1] == 0) {
-						printf("이런! 헛짓을 해버렸다!\n");
+            		if(health >= ((int)max_h / 2)) {
+            			printf("상태 : 전의를 다지고 있다.\n");
+					} else {
+						printf("상태 : 각오를 하고 있다.\n");
 					}
-					if(skill_atk[skill[ch3-1]] > 0) {
+					printf("______________________________________\n");
+					printf("무엇을 해야할까?\n");
+					printf("1.공격 2.스킬사용 3.상황 체크 4.도망친다. \n");
+					scanf("%d", &ch2);
+					printf("______________________________________\n");
+					if(ch2 == 1) {
+						printf("이얍!\n");
+						printf("적에게 %d의 피해를 입혔다.\n", atk);
+						m_health -= atk;
+					} else if(ch2 == 2) {
+						printf("무슨 스킬을 사용할까?\n");
+						printf("1. <%s> 2. <%s> 3. <%s> 4. <%s>",skill_name[skill[0]],skill_name[skill[1]],skill_name[skill[2]],skill_name[skill[3]]);
+						scanf("%d", &ch3);
+						if(skill[ch3-1] == 0) {
+							printf("이런! 헛짓을 해버렸다!\n");
+						}
+						if(skill_atk[skill[ch3-1]] > 0) {
 						m_health -= skill_atk[skill[ch3-1]] * atk;
 						printf("%s(으)로%f의 피해를 입혔다!\n",skill_name[skill[ch3-1]], skill_atk[skill[ch3-1]] * atk);
+						}
+						if(skill[ch3-1] == 3) {
+							health += (health * 0.3) + (1 * atk);
+							printf("명상(으)로 체력을 %f 회복했다.!\n",(health * 0.3) + (1 * atk));
+						}
+						if(health > max_h) {
+							health = max_h;
+						}					
+					} else if(ch2 == 3) {
+						printf("남는 선택지");
+					} else if(ch2 == 4) {
+						printf("축복이(은)는 야비하게 도망쳤다. . .\n");
+						break;
 					}
-					if(skill[ch3-1] == 3) {
-						health += (health * 0.3) + (1 * atk);
-						printf("명상(으)로 체력을 %f 회복했다.!\n",(health * 0.3) + (1 * atk));
+					if(m_health <= 0) {
+						printf("%s(을)를 쓰러트렸다!\n",monster_name[m_ch]);
+						printf("EXP + %d , Gold + %d\n", (m_ch + 1) * (Lv * 30) + 70, (m_ch + 1) * 500);
+						exp +=  (m_ch + 1) * (Lv * 20) + 50;
+						gold += (m_ch + 1) * 500;
+						while(exp >= max_e) {
+							exp -= max_e;
+							max_e += 15;
+							Lv++;
+							max_h += 25;
+							health = max_h;
+							atk += 10;
+							printf("Level up!\n");
+						}
+						break;
 					}
-					if(health > max_h) {
-						health = max_h;
-					}					
-				} else if(ch2 == 3) {
-					printf("남는 선택지");
-				} else if(ch2 == 4) {
-					printf("축복이(은)는 야비하게 도망쳤다. . .\n");
-					break;
-				}
-				if(m_health <= 0) {
-					printf("%s(을)를 쓰러트렸다!\n",monster_name[m_ch]);
-					printf("EXP + %d , Gold + %d\n", (m_ch + 1) * (Lv * 30) + 70, (m_ch + 1) * 500);
-					exp +=  (m_ch + 1) * (Lv * 20) + 50;
-					gold += (m_ch + 1) * 500;
-					while(exp >= max_e) {
-						exp -= max_e;
-						max_e += 15;
-						Lv++;
-						max_h += 25;
-						health = max_h;
-						atk += 10;
-						printf("Level up!\n");
+					printf("______________________________________\n");
+					printf("%s의 공격!\n",monster_name[m_ch]);
+					printf("%s의 공격으로 %d의 피해를 받았다.\n",monster_name[m_ch],m_atk);
+					health -= m_atk;
+					if(health < 0) {
+						printf("축복이 : 끄으윽...\n");
+						printf("축복이가 쓰러졌다..\n");
+						printf("전투 불가, 선택 화면으로 돌아갑니다.\n");
+						printf("경험치가 30% 줄어들고, 소지 골드의 30%를 잃습니다.");
+						exp = (int)exp * 0.3;
+						gold = (int)gold * 0.3;
+						health += max_h / 2;
+						break;
 					}
-					break;
-				}
-				printf("______________________________________\n");
-				printf("%s의 공격!\n",monster_name[m_ch]);
-				printf("%s의 공격으로 %d의 피해를 받았다.\n",monster_name[m_ch],m_atk);
-				health -= m_atk;
-				if(health < 0) {
-					printf("축복이 : 끄으윽...\n");
-					printf("축복이가 쓰러졌다..\n");
-					printf("전투 불가, 선택 화면으로 돌아갑니다.\n");
-					printf("경험치가 30% 줄어들고, 소지 골드의 30%를 잃습니다.");
-					exp = (int)exp * 0.3;
-					gold = (int)gold * 0.3;
-					health += max_h / 2;
-					break;
-				}
-			} 		
+				} 
+			} else if(ran == 2) {
+				printf("2번쨰 이벤트!\n");
+			}
         } else if (ch == 2) {
             printf("<축복이의 능력치>\n");
             printf("LV : %d\n", Lv);
