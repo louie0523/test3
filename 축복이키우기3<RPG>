@@ -1,7 +1,5 @@
-
-
-
-
+#include <cstdlib>
+#include <ctime>
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
@@ -11,8 +9,8 @@ using namespace std;
 int main() {
     printf("<축복이 키우기 3>\n");
     printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
-    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, ch2,cri, cri_atk, m_atk, ch3;
-    float m_health,m_mhealth,health,max_h;
+    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3;
+    float m_health,m_mhealth,health,max_h, cri, cri_atk;
     max_h = 100;
     health = 100;
     atk = 25;
@@ -60,24 +58,28 @@ int main() {
         printf("1.전투를 준비한다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
         scanf("%d", &ch);
         if (ch == 1) {
-        	if(nml >= 10){
-        		m_ch++;
-        		nml = 0;
-			}
-			printf("길을 걷다가 야생의 %s(이)가 등장했다.\n",monster_name[m_ch]);
-			m_mhealth = mmax_h[m_ch] + (Lv * 30);
-			m_health = m_mhealth;
-			m_atk = m_matk[m_ch] + (Lv * 5);
-			while(1) {
-				printf("______________________________________\n");
-				printf("<%s>\n",monster_name[m_ch]);
-				printf("%s의 최대체력 : 체력 - %f : %f\n",monster_name[m_ch], m_mhealth, m_health);
-				printf("%s의 공격력 - %d\n",monster_name[m_ch],m_atk);
-				printf("<축복이의 상태>\n");
-           		printf("LV : %d\n", Lv);
-           		printf("필요 EXP : %d - %d\n", max_e, exp);
-            	printf("최대체력 : %2f - %2f\n", max_h, health);
-            	printf("공격력 : %d\n", atk);
+        	std::srand(static_cast<unsigned int>(std::time(nullptr)));
+   			int ran = std::rand() % 3 + 1;
+   			if(ran == 1) {
+   				if(nml >= 10){
+        			m_ch++;
+        			nml = 0;
+				}
+				printf("길을 걷다가 야생의 %s(이)가 등장했다.\n",monster_name[m_ch]);
+				m_mhealth = mmax_h[m_ch] + (Lv * 30);
+				m_health = m_mhealth;
+				m_atk = m_matk[m_ch] + (Lv * 5);
+				while(1) {
+					printf("______________________________________\n");
+					printf("<%s>\n",monster_name[m_ch]);
+					printf("%s의 최대체력 : 체력 - %f : %f\n",monster_name[m_ch], m_mhealth, m_health);
+					printf("%s의 공격력 - %d\n",monster_name[m_ch],m_atk);
+					printf("<축복이의 상태>\n");
+           			printf("LV : %d\n", Lv);
+           			printf("필요 EXP : %d - %d\n", max_e, exp);
+            		printf("최대체력 : %2f - %2f\n", max_h, health);
+            		printf("공격력 : %d\n", atk);
+            	}
             	if(health >= ((int)max_h / 2)) {
             		printf("상태 : 전의를 다지고 있다.\n");
 				} else {
@@ -146,7 +148,7 @@ int main() {
 					health += max_h / 2;
 					break;
 				}
-			} 
+			} 		
         } else if (ch == 2) {
             printf("<축복이의 능력치>\n");
             printf("LV : %d\n", Lv);
