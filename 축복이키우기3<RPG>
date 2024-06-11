@@ -1,6 +1,7 @@
 
 
 
+
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
@@ -125,7 +126,7 @@ int main() {
 						max_e += 15;
 						Lv++;
 						max_h += 25;
-						health += 25;
+						health = max_h;
 						atk += 10;
 						printf("Level up!\n");
 					}
