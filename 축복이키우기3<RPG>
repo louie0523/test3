@@ -9,7 +9,7 @@ using namespace std;
 int main() {
     printf("<축복이 키우기 3>\n");
     printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
-    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3, ch2;
+    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3, ch2, ch4;
     float m_health,m_mhealth,health,max_h, cri, cri_atk;
     max_h = 100;
     health = 100;
@@ -55,7 +55,7 @@ int main() {
     float skill_atk[] = {0, 1.5f, 1.6f, 0, 2.2f, 2.4f, 2.0f, 2.7f, 3.0f};
     while (1) {
         printf("무엇을 할까?\n");
-        printf("1.전투를 준비한다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
+        printf("1.길을 걷는다 2.스테이터스 확인 3.스킬 확인 4.아이템 장착 목록\n");
         scanf("%d", &ch);
         if (ch == 1) {
         	std::srand(static_cast<unsigned int>(std::time(NULL)));
@@ -149,7 +149,26 @@ int main() {
 					}
 				} 
 			} else if(ran == 2) {
-				printf("2번쨰 이벤트!\n");
+				printf("길을 걷다가, 아이템 상점이 나왔다.\n");
+				printf("상점에서 무엇을 할까?\n");
+				printf("1.아이템 구매 2.나간다");
+				scanf("%d", ch4);
+				if(ch4 == 1) {
+					std::srand(static_cast<unsigned int>(std::time(NULL)));
+   					int item_1 = std::rand() % 5 + 1;
+   					int item_2 = std::rand() % 5 + 1;
+   					int item_3 = std::rand() % 5 + 1;
+   					int item_4 = std::rand() % 5 + 1;
+   					int item_5 = std::rand() % 5 + 1;
+   					int gold_1 = std::rand() % 3000 + 1000;
+   					int gold_2 = std::rand() % 3000 + 1000;
+   					int gold_3 = std::rand() % 3000 + 1000;
+   					int gold_4 = std::rand() % 3000 + 1000;
+   					int gold_5 = std::rand() % 3000 + 1000;
+					while(1) {
+						printf("1.%d(%dG)\n", itme_name[item_1], gold_1);
+					}
+				}
 			}
         } else if (ch == 2) {
             printf("<축복이의 능력치>\n");
