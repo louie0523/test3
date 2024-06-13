@@ -1,3 +1,4 @@
+
 #include <cstdlib>
 #include <ctime>
 #include <stdio.h>
@@ -167,6 +168,11 @@ int main() {
    					int gold_5 = std::rand() % 3000 + 1000;
 					while(1) {
 						printf("1.%d(%dG)\n", itme_name[item_1], gold_1);
+						printf("2.%d(%dG)\n", itme_name[item_2], gold_2);
+						printf("3.%d(%dG)\n", itme_name[item_3], gold_3);
+						printf("4.%d(%dG)\n", itme_name[item_4], gold_4);
+						printf("5.%d(%dG)\n", itme_name[item_5], gold_5);
+						printf("구매 : 1~5 입력 , 나가기 : 6 입력");
 					}
 				}
 			}
