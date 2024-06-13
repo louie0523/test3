@@ -153,7 +153,7 @@ int main() {
 				printf("길을 걷다가, 아이템 상점이 나왔다.\n");
 				printf("상점에서 무엇을 할까?\n");
 				printf("1.아이템 구매 2.나간다");
-				scanf("%d", ch4);
+				scanf("%d", &ch4);
 				if(ch4 == 1) {
 					std::srand(static_cast<unsigned int>(std::time(NULL)));
    					int item_1 = std::rand() % 5 + 1;
@@ -167,12 +167,13 @@ int main() {
    					int gold_4 = std::rand() % 3000 + 1000;
    					int gold_5 = std::rand() % 3000 + 1000;
 					while(1) {
-						printf("1.%d(%dG)\n", itme_name[item_1], gold_1);
-						printf("2.%d(%dG)\n", itme_name[item_2], gold_2);
-						printf("3.%d(%dG)\n", itme_name[item_3], gold_3);
-						printf("4.%d(%dG)\n", itme_name[item_4], gold_4);
-						printf("5.%d(%dG)\n", itme_name[item_5], gold_5);
+						printf("1.%d(%dG)\n", item_name[item_1], gold_1);
+						printf("2.%d(%dG)\n", item_name[item_2], gold_2);
+						printf("3.%d(%dG)\n", item_name[item_3], gold_3);
+						printf("4.%d(%dG)\n", item_name[item_4], gold_4);
+						printf("5.%d(%dG)\n", item_name[item_5], gold_5);
 						printf("구매 : 1~5 입력 , 나가기 : 6 입력");
+						scanf("%d", &ch4);
 					}
 				}
 			}
