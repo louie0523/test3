@@ -1,4 +1,5 @@
 
+
 #include <cstdlib>
 #include <ctime>
 #include <stdio.h>
@@ -10,7 +11,7 @@ using namespace std;
 int main() {
     printf("<축복이 키우기 3>\n");
     printf("본 프로그램은 가상의 인물 어쩌구 저쩌구\n");
-    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3, ch2, ch4;
+    int atk, Lv, exp, max_e, gold, ch, m_ch, nml, speed, m_atk, ch3, ch2, ch4, ch5;
     float m_health,m_mhealth,health,max_h, cri, cri_atk;
     max_h = 100;
     health = 100;
@@ -21,18 +22,28 @@ int main() {
     gold = 1000;
     m_ch = 0;
     nml = 1; // Need Monster Lv
-    speed = 100;
+    speed = 0;
     cri = 0.1;
     cri_atk = 0.75;
-    float atk_ban = 0.f;
+    int atk_ban = 0;
     ////////////////////
     
-    const char* item_name[] = {"박망고","김미진", "박상도", "박상도의 플레이스테이션", "어머니의 손길"};
-    const char* item_ep[] = {"박망고의 보신탕을 먹어 최대 HP가 300 증가합니다.",
+    const char* item_name[] = {"박망고","김미진", "박상도", "박상도의 플레이스테이션", "어머니의 손길","민철이의 가발",
+								"낡은 철검", "인종차별 금지 포스터"};
+    const char* item_ep[] = {"박망고의 보신탕을 먹어 최대 체력이 300 증가합니다.",
 							"미진이의 춤을 보고 감명 받아 회피율이 10% 증가합니다.",
 							"상도덕을 지켜 레벨이 낮은 적에게 입히는 피해가 50% 증가합니다.",
 							"상도의 게임기를 활용하여 20%확률로 적의 공격을 반사합니다.",
-							"엄마를 따라갑니다."};
+							"엄마를 따라갑니다.",
+							"스킬 '탈모빔'의 위력이 250% 증가합니다.",
+							"공격력이 15, 체력이 100 증가한다.",
+							"적이 자신을 공격시 10의 피해로 반사합니다."};
+	int i_hp_up[] = {300, 0, 0, 0, 0, 100, 0};
+	int i_atk_up[] = {0, 0, 0, 0, 0, 0, 15, 0};
+	int i_speed[] = {0, 10, 0, 0, 0, 0, 0, 0};
+	int i_cri[] =   {0, 0, 0, 0, 0, 0, 0, 0};
+	int i_cri_atk[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	int i_atk_ban[] = {0, 0, 0, 20, 0, 0, 0, 0};
     const char* monster_name[] = {"슬라임","고블린", "오크", "와이번", "드래곤"};
     int mmax_h[] = {100, 400, 1000, 2500, 10000};
     int m_matk[] = {5, 15, 25, 45, 80};
@@ -156,24 +167,60 @@ int main() {
 				scanf("%d", &ch4);
 				if(ch4 == 1) {
 					std::srand(static_cast<unsigned int>(std::time(NULL)));
-   					int item_1 = std::rand() % 5 + 1;
-   					int item_2 = std::rand() % 5 + 1;
-   					int item_3 = std::rand() % 5 + 1;
-   					int item_4 = std::rand() % 5 + 1;
-   					int item_5 = std::rand() % 5 + 1;
-   					int gold_1 = std::rand() % 3000 + 1000;
-   					int gold_2 = std::rand() % 3000 + 1000;
-   					int gold_3 = std::rand() % 3000 + 1000;
-   					int gold_4 = std::rand() % 3000 + 1000;
-   					int gold_5 = std::rand() % 3000 + 1000;
+					int item_n[5];
+   					item_n[0] = std::rand() % 5 + 1;
+   					item_n[1] = std::rand() % 5 + 1;
+   					item_n[2] = std::rand() % 5 + 1;
+   					item_n[3] = std::rand() % 5 + 1;
+   					item_n[4] = std::rand() % 5 + 1;
+   					int gold_n[5];
+   					gold_n[0] = std::rand() % 3000 + 1000;
+   					gold_n[1] = std::rand() % 3000 + 1000;
+   					gold_n[2] = std::rand() % 3000 + 1000;
+   					gold_n[3] = std::rand() % 3000 + 1000;
+   					gold_n[4] = std::rand() % 3000 + 1000;
 					while(1) {
-						printf("1.%d(%dG)\n", item_name[item_1], gold_1);
-						printf("2.%d(%dG)\n", item_name[item_2], gold_2);
-						printf("3.%d(%dG)\n", item_name[item_3], gold_3);
-						printf("4.%d(%dG)\n", item_name[item_4], gold_4);
-						printf("5.%d(%dG)\n", item_name[item_5], gold_5);
-						printf("구매 : 1~5 입력 , 나가기 : 6 입력");
+						printf("1.%s(%dG)\n", item_name[item_n[0]], gold_n[0]);
+						printf("2.%s(%dG)\n", item_name[item_n[1]], gold_n[1]);
+						printf("3.%s(%dG)\n", item_name[item_n[2]], gold_n[2]);
+						printf("4.%s(%dG)\n", item_name[item_n[3]], gold_n[3]);
+						printf("5.%s(%dG)\n", item_name[item_n[4]], gold_n[4]);
+						printf("아이템 자세히 확인 : 1~5 입력 , 나가기 : 6 입력");
 						scanf("%d", &ch4);
+						if(ch4 <= 5) {
+							printf("아이템 : %s\n",item_name[item_n[ch4]]);
+							printf("설명 : %s\n",item_ep[item_n[ch4]]);
+							if(i_hp_up[item_n[ch4]] > 0) {
+								printf("체력 증가량 : %d\n", i_hp_up[item_n[ch4]]);
+							}
+							if(i_atk_up[item_n[ch4]] > 0) {
+								printf("공격력 증가량 : %d\n", i_atk_up[item_n[ch4]]);
+							}
+							if(i_hp_up[item_n[ch4]] > 0) {
+								printf("체력 증가량 : %d\n", i_hp_up[item_n[ch4]]);
+							}
+							if(i_hp_up[item_n[ch4]] > 0) {
+								printf("체력 증가량 : %d\n", i_hp_up[item_n[ch4]]);
+							}
+							if(i_hp_up[item_n[ch4]] > 0) {
+								printf("체력 증가량 : %d\n", i_hp_up[item_n[ch4]]);
+							}
+							printf("가격 : %d\n", gold_n[ch4]);
+							printf("소지 골드 : %dG\n", gold);
+							printf("1.구매 2.다른 아이템을 본다.");
+							scanf("%d", &ch5);
+							if(ch5 == 1) {
+								if(gold >= gold_n[ch4]) {
+									printf("%s(을)를 구매하였다!\n",item_name[item_n[ch4]]);
+									gold -= gold_n[ch4];
+									printf("아이템을 구매하였으므로, 상점을 나갑니다..\n");
+									break;
+								}
+							}
+						} else {
+							printf("상점을 나갑니다...\n");
+							break;
+						}
 					}
 				}
 			}
