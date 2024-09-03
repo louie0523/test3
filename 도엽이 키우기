@@ -1,0 +1,39 @@
+#includ<stdio.h>
+
+main() {
+	printf("도엽이 키우기! \n");
+	printf("v 0.1\n");
+	printf("본 프로그램은 가상의 인물을 활용하여 제작했음을 알립니다.\n");
+	int health, stless, justice, ch, ch2;
+	Char name = "이도엽";
+	
+	while(1) {
+		printf("%s이가 있다. 무엇을 시킬까?\n", name);
+		printf("1.청소 2.외출시키기 3.요리 4.아무것도 시키지 않는다.\n");
+		scanf("%d", ch);
+		if(ch == 1) {
+			while(1) {
+				printf("%s : 주인님! 어디를 청소할까요?");
+				printf("어디를 청소시킬까?\n");
+				printf("1.안방 2.거실 3.화장실 4.부엌\n");
+				scanf("%d", ch2);
+				if(ch2 == 1) {
+					printf("%s : 네! 안방을 청소할게요!\n");
+					printf("도엽이는 열심히 안방을 청소했다.\n");
+				} else if(ch2 == 2) {
+					printf("%s : 네..? 거실이요..? 넓긴 한데.. 청소할게요!\n");
+					printf("도엽이는 넓은 거실을 청소했다.\n");
+				} else if(ch2 == 3) {
+					printf("%s : 네...!\n");
+					printf("도엽이는 화장실을 청소했다...\n");
+				} else if(ch2 == 4) {
+					printf("%s : 부엌에서 앞치마 매고 청소 하라구요..?\n");
+					printf("도엽이는 앞치마를 매고 부엌을 청소했다.\n");
+				}
+				break;
+			}
+		} else if(ch == 2) {
+			printf("%s : 네 주인님! 다녀오겠습니다..!\n");
+		}
+	}
+}
