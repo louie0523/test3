@@ -1,10 +1,14 @@
-#includ<stdio.h>
+#include <cstdlib>
+#include <ctime>
+#include <stdio.h>
+#include <iostream>
+#include <string.h>
 
 main() {
 	printf("도엽이 키우기! \n");
 	printf("v 0.1\n");
 	printf("본 프로그램은 가상의 인물을 활용하여 제작했음을 알립니다.\n");
-	int health, stless, justice, ch, ch2;
+	int health, stless, justice, ch, ch2, event, jin;
 	Char name = "이도엽";
 	
 	while(1) {
@@ -34,6 +38,22 @@ main() {
 			}
 		} else if(ch == 2) {
 			printf("%s : 네 주인님! 다녀오겠습니다..!\n");
+			event = std::rand() % 3 + 1;
+			printf("%s : 주인님 다녀왔어요!\n");
+			if(event == 1) {
+				printf("%s이는 '진화의 조각'을 1개 가져왔다.\n");
+				jin++
+				if(jin >= 3) {
+					printf("%s(은)는 진화할 준비가 되었다..! 진화시킬까?\n");
+					printf("1.진화시킨다. 2.진화를 포기한다.\n");
+					int ch3;
+					scanf("%d", ch3);
+					if(ch3 == 1) {
+						printf("%s(은)는 '이정희'로 진화했다!!\n");
+						name = "이정희";
+					}
+				}
+			} 
 		}
 	}
 }
