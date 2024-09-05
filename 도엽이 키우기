@@ -1,3 +1,4 @@
+
 #include <cstdlib>
 #include <ctime>
 #include <stdio.h>
@@ -8,8 +9,8 @@ main() {
 	printf("도엽이 키우기! \n");
 	printf("v 0.1\n");
 	printf("본 프로그램은 가상의 인물을 활용하여 제작했음을 알립니다.\n");
-	int health, stless, justice, ch, ch2, event, jin;
-	Char name = "이도엽";
+	int health, stless, justice, ch, ch2, event, jin, monster_heart;
+	*char name = "이도엽";
 	
 	while(1) {
 		printf("%s이가 있다. 무엇을 시킬까?\n", name);
@@ -33,6 +34,11 @@ main() {
 				} else if(ch2 == 4) {
 					printf("%s : 부엌에서 앞치마 매고 청소 하라구요..?\n");
 					printf("도엽이는 앞치마를 매고 부엌을 청소했다.\n");
+				}else if(ch2 == 5) {
+					printf("%s : 어디를 청소하라구요..?\n");
+					printf("주인공 : 싫어?\n");
+					printf("%s : 할...할게요..\n");
+					printf("상쾌해졌다!\n");
 				}
 				break;
 			}
@@ -51,9 +57,17 @@ main() {
 					if(ch3 == 1) {
 						printf("%s(은)는 '이정희'로 진화했다!!\n");
 						name = "이정희";
+						jin = 0;
 					}
 				}
-			} 
+			} else if(event == 2) {
+				pirntf("%s는 미지의 적을 마주쳤다.\n");
+				printf("%s : 하늘에서 정희가 빗발친다!\n");
+				printf("몬스터 심장 획득\n");
+				monster_heart++;
+			} else if(event == 3) {
+				printf("")
+			}
 		}
 	}
 }
