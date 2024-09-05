@@ -10,7 +10,7 @@ main() {
 	printf("v 0.1\n");
 	printf("본 프로그램은 가상의 인물을 활용하여 제작했음을 알립니다.\n");
 	int health, stless, justice, ch, ch2, event, jin, monster_heart;
-	*char name = "이도엽";
+	char name[] = "이도엽";
 	
 	while(1) {
 		printf("%s이가 있다. 무엇을 시킬까?\n", name);
